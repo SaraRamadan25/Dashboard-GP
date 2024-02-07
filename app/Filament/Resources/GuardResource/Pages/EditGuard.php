@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\JacketResource\Pages;
+namespace App\Filament\Resources\GuardResource\Pages;
 
-use App\Filament\Resources\JacketResource;
+use App\Filament\Resources\GuardResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditJacket extends EditRecord
+class EditGuard extends EditRecord
 {
-    protected static string $resource = JacketResource::class;
+    protected static string $resource = GuardResource::class;
 
     protected function getHeaderActions(): array
     {
