@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guards', function (Blueprint $table) {
+        Schema::create('patrons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->string('phone');
-            $table->foreignId('area_id')->constrained('areas');
-            $table->foreignId('jacket_id')->constrained('jackets');
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guards');
+        Schema::dropIfExists('patrons');
     }
 };

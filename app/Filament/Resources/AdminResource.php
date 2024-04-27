@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AreaResource\Pages;
-use App\Filament\Resources\AreaResource\RelationManagers;
-use App\Models\Area;
+use App\Filament\Resources\AdminResource\Pages;
+use App\Filament\Resources\AdminResource\RelationManagers;
+use App\Models\Admin;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AreaResource extends Resource
+class AdminResource extends Resource
 {
-    protected static ?string $model = Area::class;
+    protected static ?string $model = Admin::class;
 
-    protected static ?string $navigationIcon = 'carbon-area';
+    protected static ?string $navigationIcon = 'carbon-user-admin';
 
     public static function form(Form $form): Form
     {
@@ -26,12 +26,19 @@ class AreaResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Forms\Components\TextInput::make('admins')
-                    ->label('Admins')
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
+                    ->required(),
+                Forms\Components\TextInput::make('phone')
+                    ->label('Phone')
+                    ->required(),
+                Forms\Components\TextInput::make('Area')
+                    ->label('Area')
                     ->required(),
                 Forms\Components\TextInput::make('guards')
                     ->label('Guards')
                     ->required(),
+
             ]);
     }
 
@@ -40,23 +47,18 @@ class AreaResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Area Name'),
+                    ->label('Name'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email'),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('Phone'),
+                Tables\Columns\TextColumn::make('Area')
+                    ->label('Area'),
+                Tables\Columns\TextColumn::make('guard.name')
+                    ->label('Guard')
+                    ->searchable()
+                    ->sortable(),
 
-                Tables\Columns\TextColumn::make('admins')
-                    ->label('Admins')
-                    ->value(function (Area $area) {
-                        return $area->admins()->count();
-                    }),
-                Tables\Columns\TextColumn::make('guards')
-                    ->label('Guards')
-                    ->value(function (Area $area) {
-                        return $area->guards->count();
-                    }),
-                Tables\Columns\TextColumn::make('jackets')
-                    ->label('Jackets')
-                    ->value(function (Area $area) {
-                        return $area->jackets->count();
-                    }),
             ])
             ->filters([
                 //
@@ -81,9 +83,9 @@ class AreaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAreas::route('/'),
-            'create' => Pages\CreateArea::route('/create'),
-            'edit' => Pages\EditArea::route('/{record}/edit'),
+            'index' => Pages\ListAdmins::route('/'),
+            'create' => Pages\CreateAdmin::route('/create'),
+            'edit' => Pages\EditAdmin::route('/{record}/edit'),
         ];
     }
 }

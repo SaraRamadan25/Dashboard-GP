@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Guard;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,6 +26,7 @@ class JacketFactory extends Factory
             'batteryLevel' => $this->faker->numberBetween(0, 100),
             'start_rent_time' => $this->faker->dateTimeBetween('now', '+1 week'),
             'end_rent_time' => $this->faker->dateTimeBetween('+1 week', '+2 weeks'),
+            'guard_id' => Guard::factory()
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Resources\InquiryResource\Pages;
+use App\Filament\Resources\InquiryResource\RelationManagers;
+use App\Models\Inquiry;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class InquiryResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Inquiry::class;
 
-    protected static ?string $navigationIcon = 'heroicon-m-user-group';
+    protected static ?string $navigationIcon = 'fluentui-person-question-mark-16-o';
 
     public static function form(Form $form): Form
     {
@@ -26,11 +26,17 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->label('phone')
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
                     ->required(),
-                Forms\Components\TextInput::make('password')
-                    ->label('Password')
+                Forms\Components\Textarea::make('subject')
+                    ->label('Subject')
+                    ->required(),
+                Forms\Components\Textarea::make('message')
+                    ->label('Message')
+                    ->required(),
+                Forms\Components\TextInput::make('admin_id')
+                    ->label('Admin Id')
                     ->required(),
             ]);
     }
@@ -39,10 +45,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->label('Name'),
-                Tables\Columns\TextColumn::make('phone')
-                    ->label("Parent's phone"),
+                //
             ])
             ->filters([
                 //
@@ -67,9 +70,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListInquiries::route('/'),
+            'create' => Pages\CreateInquiry::route('/create'),
+            'edit' => Pages\EditInquiry::route('/{record}/edit'),
         ];
     }
 }

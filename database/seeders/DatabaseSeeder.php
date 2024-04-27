@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin;
 use App\Models\Area;
 use App\Models\Guard;
 use App\Models\Jacket;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         Jacket::factory(10)->create();
         Area::factory(5)->create();
         Guard::factory(5)->create();
+        Admin::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

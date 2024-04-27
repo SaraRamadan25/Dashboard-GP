@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guards', function (Blueprint $table) {
+        Schema::create('safety_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone');
-            $table->foreignId('area_id')->constrained('areas');
-            $table->foreignId('jacket_id')->constrained('jackets');
+            $table->double('height');
+            $table->double('weight');
+            $table->double('heart_rate');
+            $table->string('blood_type', 2);
+            $table->text('diseases');
+            $table->text('allergies');
+            $table->foreignId('child_id')->constrained('children');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guards');
+        Schema::dropIfExists('safety_infos');
     }
 };

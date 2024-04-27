@@ -22,4 +22,9 @@ class Jacket extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function guardRelation(): BelongsTo
+    {
+        return $this->belongsTo(Guard::class);
+    }
 }
