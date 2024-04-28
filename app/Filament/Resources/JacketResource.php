@@ -64,6 +64,12 @@ class JacketResource extends Resource
                 Tables\Columns\TextColumn::make('end_rent_time')
                     ->label('End Rent Time')
                     ->date('F j, Y g a'),
+
+
+                Tables\Columns\TextColumn::make('guardRelation.name')
+                    ->badge()
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //

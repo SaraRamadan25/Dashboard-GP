@@ -52,12 +52,10 @@ class AdminResource extends Resource
                     ->label('Email'),
                 Tables\Columns\TextColumn::make('phone')
                     ->label('Phone'),
-                Tables\Columns\TextColumn::make('Area')
+                Tables\Columns\TextColumn::make('area_id')
                     ->label('Area'),
-                Tables\Columns\TextColumn::make('guard.name')
-                    ->label('Guard')
-                    ->searchable()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('jacket_id')
+                    ->label('Jacket'),
 
             ])
             ->filters([

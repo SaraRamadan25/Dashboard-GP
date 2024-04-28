@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Area;
+use App\Models\Jacket;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class AdminFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->email,
             'phone' => $this->faker->phoneNumber,
-            'area' => $this->faker->address
+            'area_id' => Area::factory(),
+            'jacket_id' => Jacket::factory()
         ];
     }}

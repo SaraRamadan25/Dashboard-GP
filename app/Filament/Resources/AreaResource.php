@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -41,22 +42,10 @@ class AreaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Area Name'),
+                Tables\Columns\TextColumn::make('admin.name'),
+                Tables\Columns\TextColumn::make('jacket.modelno'),
 
-                Tables\Columns\TextColumn::make('admins')
-                    ->label('Admins')
-                    ->value(function (Area $area) {
-                        return $area->admins()->count();
-                    }),
-                Tables\Columns\TextColumn::make('guards')
-                    ->label('Guards')
-                    ->value(function (Area $area) {
-                        return $area->guards->count();
-                    }),
-                Tables\Columns\TextColumn::make('jackets')
-                    ->label('Jackets')
-                    ->value(function (Area $area) {
-                        return $area->jackets->count();
-                    }),
+
             ])
             ->filters([
                 //

@@ -24,4 +24,9 @@ class Area extends Model
     {
         return $this->hasMany(Jacket::class);
     }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

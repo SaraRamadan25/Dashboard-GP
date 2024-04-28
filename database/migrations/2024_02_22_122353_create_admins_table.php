@@ -16,10 +16,10 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('Area');
             $table->string('phone');
             $table->string('email');
-
+            $table->foreignId('area_id')->constrained('areas');
+            $table->foreignId('jacket_id')->constrained('jackets');
 
             $table->timestamps();
 
