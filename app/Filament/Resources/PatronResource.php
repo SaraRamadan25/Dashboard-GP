@@ -18,6 +18,7 @@ class PatronResource extends Resource
     protected static ?string $model = Patron::class;
 
     protected static ?string $navigationIcon = 'mdi-mother-heart';
+    protected static ?string $label = 'Parents';
 
     public static function form(Form $form): Form
     {
@@ -31,7 +32,14 @@ class PatronResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Name'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email'),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('Phone'),
+                Tables\Columns\ImageColumn::make('avatar')
+                    ->label('Photo'),
             ])
             ->filters([
                 //

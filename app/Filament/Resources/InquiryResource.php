@@ -45,7 +45,16 @@ class InquiryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Name'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email'),
+                Tables\Columns\TextColumn::make('subject')
+                    ->label('Subject'),
+                Tables\Columns\TextColumn::make('message')
+                    ->label('Message'),
+                Tables\Columns\TextColumn::make('admin.name')
+                    ->label('Admin Name'),
             ])
             ->filters([
                 //

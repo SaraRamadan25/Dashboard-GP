@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Resources\ChildResource\Pages;
+use App\Filament\Resources\ChildResource\RelationManagers;
+use App\Models\Child;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class ChildResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Child::class;
 
     protected static ?string $navigationIcon = 'heroicon-m-user-group';
 
@@ -23,15 +23,7 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Name')
-                    ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->label('phone')
-                    ->required(),
-                Forms\Components\TextInput::make('password')
-                    ->label('Password')
-                    ->required(),
+                //
             ]);
     }
 
@@ -40,9 +32,10 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Name'),
-                Tables\Columns\TextColumn::make('phone')
-                    ->label("Parent's phone"),
+                    ->label('Name')
+                    ->searchable()
+                    ->sortable(),
+
             ])
             ->filters([
                 //
@@ -67,9 +60,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListChildren::route('/'),
+            'create' => Pages\CreateChild::route('/create'),
+            'edit' => Pages\EditChild::route('/{record}/edit'),
         ];
     }
 }

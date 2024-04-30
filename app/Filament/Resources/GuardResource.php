@@ -54,7 +54,6 @@ class GuardResource extends Resource
                     ->label('Area')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('jackets_count')->counts('jackets')
 
 
             ])
