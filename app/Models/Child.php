@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Child extends Model
 {
     use HasFactory;
+
+    public function safetyInfo(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(SafetyInfo::class);
+    }
 }

@@ -42,8 +42,7 @@ class AreaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Area Name'),
-                Tables\Columns\TextColumn::make('admin.name'),
-                Tables\Columns\TextColumn::make('jacket.modelno'),
+                Tables\Columns\TextColumn::make('admins.name'),
 
 
             ])

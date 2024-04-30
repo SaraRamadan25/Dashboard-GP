@@ -66,7 +66,8 @@ class JacketResource extends Resource
                     ->date('F j, Y g a'),
 
 
-                Tables\Columns\TextColumn::make('guardRelation.name')
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Parent Name')
                     ->badge()
                     ->searchable()
                     ->sortable(),

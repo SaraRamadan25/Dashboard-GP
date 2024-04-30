@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Admin;
 use App\Models\Area;
 use App\Models\Jacket;
 use App\Models\User;

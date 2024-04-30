@@ -9,8 +9,10 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AdminResource extends Resource
@@ -52,10 +54,9 @@ class AdminResource extends Resource
                     ->label('Email'),
                 Tables\Columns\TextColumn::make('phone')
                     ->label('Phone'),
-                Tables\Columns\TextColumn::make('area_id')
-                    ->label('Area'),
-                Tables\Columns\TextColumn::make('jacket_id')
-                    ->label('Jacket'),
+
+
+
 
             ])
             ->filters([

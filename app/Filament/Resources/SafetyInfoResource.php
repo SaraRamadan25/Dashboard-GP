@@ -45,8 +45,8 @@ class SafetyInfoResource extends Resource
                     ->label('Allergies'),
                 Tables\Columns\TextColumn::make('diseases')
                     ->label('Diseases'),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->label('User Id'),
+                Tables\Columns\TextColumn::make('child.name')
+                    ->label('Child Name'),
 
                 ])
             ->filters([

@@ -15,12 +15,12 @@ class Admin extends Model
         return $this->hasMany(Guard::class);
     }
 
-    public function area(): HasMany
+    public function areas(): HasMany
     {
         return $this->hasMany(Area::class);
     }
 
-    public function jacket(): HasMany
+    public function jackets(): HasMany
     {
         return $this->hasMany(Jacket::class);
     }
