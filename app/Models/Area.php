@@ -15,9 +15,9 @@ class Area extends Model
         return $this->hasMany(Guard::class);
     }
 
-    public function admins(): HasMany
+    public function admin(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasMany(Admin::class);
+        return $this->hasOne(Admin::class);
     }
 
     public function jackets(): HasMany

@@ -13,4 +13,9 @@ class Child extends Model
     {
         return $this->hasOne(SafetyInfo::class);
     }
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

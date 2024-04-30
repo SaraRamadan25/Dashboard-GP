@@ -32,7 +32,15 @@ class ChildResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Name')
+                    ->label('Child Name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.phone')
+                    ->label('Parent Phone Number')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->label('Parent Email')
                     ->searchable()
                     ->sortable(),
 

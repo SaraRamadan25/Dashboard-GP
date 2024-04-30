@@ -42,7 +42,7 @@ class AreaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Area Name'),
-                Tables\Columns\TextColumn::make('admins.name'),
+                Tables\Columns\TextColumn::make('admin.name'),
 
 
             ])
