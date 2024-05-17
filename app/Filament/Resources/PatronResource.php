@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PatronResource\Pages;
 use App\Filament\Resources\PatronResource\RelationManagers;
 use App\Models\Patron;
+use Cheesegrits\FilamentPhoneNumbers;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Rawilk\FilamentPasswordInput\Password;
 
 class PatronResource extends Resource
 {
@@ -24,7 +26,21 @@ class PatronResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label('Name')
+                    ->required(),
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
+                    ->required(),
+                Password::make('password')
+                    ->label('Password')
+                    ->required(),
+                FilamentPhoneNumbers\Forms\Components\PhoneNumber::make('phone')
+                    ->label('Phone')
+                    ->required(),
+                Forms\Components\FileUpload::make('avatar')
+                    ->label('Photo')
+                    ->image(),
             ]);
     }
 

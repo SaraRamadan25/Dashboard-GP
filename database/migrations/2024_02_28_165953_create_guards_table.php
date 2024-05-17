@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone');
             $table->foreignId('area_id')->constrained('areas');
-            $table->foreignId('jacket_id')->constrained('jackets');
             $table->timestamps();
         });
     }

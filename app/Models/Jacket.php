@@ -10,13 +10,7 @@ class Jacket extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'modelno',
-        'user_id',
-        'batteryLevel',
-        'start_rent_time',
-        'end_rent_time',
-    ];
+    protected $guarded = [];
 
     public function user(): BelongsTo
     {

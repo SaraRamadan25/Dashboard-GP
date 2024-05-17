@@ -45,6 +45,12 @@ class JacketResource extends Resource
                 Forms\Components\DateTimePicker::make('end_rent_time')
                     ->label('End Rent Time')
                     ->required(),
+                Forms\Components\Select::make('area_id')
+                    ->label('Area')
+                    ->options(
+                        \App\Models\Area::all()->pluck('name', 'id')->toArray()
+                    )
+                    ->required(),
             ]);
     }
 
@@ -64,7 +70,6 @@ class JacketResource extends Resource
                 Tables\Columns\TextColumn::make('end_rent_time')
                     ->label('End Rent Time')
                     ->date('F j, Y g a'),
-
 
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Parent Name')

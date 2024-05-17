@@ -36,6 +36,9 @@ class GuardResource extends Resource
                 Forms\Components\TextInput::make('phone')
                     ->label('Phone')
                     ->required(),
+                Forms\Components\Select::make('area_id')
+                    ->relationship('area', 'name')
+                    ->required(),
             ]);
     }
 

@@ -9,4 +9,5 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSafetyInfo extends CreateRecord
 {
     protected static string $resource = SafetyInfoResource::class;
+
 }

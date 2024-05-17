@@ -24,7 +24,6 @@ class GuardFactory extends Factory
             'password' => $this->faker->password,
             'phone' => $this->faker->phoneNumber,
             'area_id' => Area::factory(),
-            'jacket_id' => Jacket::factory(),
         ];
     }
 }

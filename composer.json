@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "blade-ui-kit/blade-heroicons": "^2.2",
+        "cheesegrits/filament-phone-numbers": "^1.0",
         "codeat3/blade-carbon-icons": "^2.18",
         "codeat3/blade-eos-icons": "^1.13",
         "codeat3/blade-fluentui-system-icons": "^1.32",
@@ -20,7 +21,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "postare/blade-mdi": "^1.1"
+        "postare/blade-mdi": "^1.1",
+        "rawilk/filament-password-input": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

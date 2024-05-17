@@ -35,9 +35,7 @@ class InquiryResource extends Resource
                 Forms\Components\Textarea::make('message')
                     ->label('Message')
                     ->required(),
-                Forms\Components\TextInput::make('admin_id')
-                    ->label('Admin Id')
-                    ->required(),
+
             ]);
     }
 
@@ -53,14 +51,13 @@ class InquiryResource extends Resource
                     ->label('Subject'),
                 Tables\Columns\TextColumn::make('message')
                     ->label('Message'),
-                Tables\Columns\TextColumn::make('admin.name')
-                    ->label('Admin Name'),
+
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -80,8 +77,7 @@ class InquiryResource extends Resource
     {
         return [
             'index' => Pages\ListInquiries::route('/'),
-            'create' => Pages\CreateInquiry::route('/create'),
-            'edit' => Pages\EditInquiry::route('/{record}/edit'),
+
         ];
     }
 }

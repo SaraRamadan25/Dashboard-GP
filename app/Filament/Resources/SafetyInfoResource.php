@@ -3,15 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SafetyInfoResource\Pages;
-use App\Filament\Resources\SafetyInfoResource\RelationManagers;
 use App\Models\SafetyInfo;
+use App\Models\Child;
 use Filament\Forms;
+use Filament\Forms\Components\BelongsToSelect;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SafetyInfoResource extends Resource
 {
@@ -23,7 +23,41 @@ class SafetyInfoResource extends Resource
     {
         return $form
             ->schema([
-                //
+                BelongsToSelect::make('child_id')
+                    ->label('Child')
+                    ->relationship('child', 'name')
+                    ->placeholder('Select Child')
+                    ->required(),
+                TextInput::make('height')
+                    ->label('Height')
+                    ->placeholder('Height in centimeters')
+                    ->required(),
+                TextInput::make('weight')
+                    ->label('Weight')
+                    ->placeholder('Weight in kilograms')
+                    ->required(),
+                TextInput::make('heart_rate')
+                    ->label('Heart Rate')
+                    ->placeholder('Heart Rate in BPM')
+                    ->required(),
+                Forms\Components\Select::make('blood_type')
+                    ->label('Blood Type')
+                    ->placeholder('Select Blood Type')
+                    ->options([
+                        'A' => 'A',
+                        'B' => 'B',
+                        'AB' => 'AB',
+                        'O' => 'O',
+                    ])
+                    ->required(),
+                Forms\Components\Textarea::make('diseases')
+                    ->label('Diseases')
+                    ->placeholder('List of diseases')
+                    ->required(),
+                Forms\Components\Textarea::make('allergies')
+                    ->label('Allergies')
+                    ->placeholder('List of allergies')
+                    ->required(),
             ]);
     }
 
@@ -32,13 +66,11 @@ class SafetyInfoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('height')
-                    ->label('height'),
+                    ->label('Height'),
                 Tables\Columns\TextColumn::make('weight')
-                    ->label('weight'),
+                    ->label('Weight'),
                 Tables\Columns\TextColumn::make('heart_rate')
                     ->label('Heart Rate'),
-                Tables\Columns\TextColumn::make('height')
-                    ->label('height'),
                 Tables\Columns\TextColumn::make('blood_type')
                     ->label('Blood Type'),
                 Tables\Columns\TextColumn::make('allergies')
@@ -47,13 +79,13 @@ class SafetyInfoResource extends Resource
                     ->label('Diseases'),
                 Tables\Columns\TextColumn::make('child.name')
                     ->label('Child Name'),
-
-                ])
+            ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
