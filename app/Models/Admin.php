@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Admin extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function guards(): HasMany
     {
         return $this->hasMany(Guard::class);
     }
 
-    public function areas(): HasMany
+    public function area(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany(Area::class);
+        return $this->belongsTo(Area::class);
     }
 
     public function jackets(): HasMany

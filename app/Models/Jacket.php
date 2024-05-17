@@ -27,4 +27,9 @@ class Jacket extends Model
     {
         return $this->belongsTo(Guard::class);
     }
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Filament\Resources\AdminResource\Pages;
 use App\Filament\Resources\AdminResource\RelationManagers;
 use App\Models\Admin;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -34,11 +35,8 @@ class AdminResource extends Resource
                 Forms\Components\TextInput::make('phone')
                     ->label('Phone')
                     ->required(),
-                Forms\Components\TextInput::make('Area')
-                    ->label('Area')
-                    ->required(),
-                Forms\Components\TextInput::make('guards')
-                    ->label('Guards')
+                Select::make('area_id')
+                    ->relationship('area', 'name')
                     ->required(),
 
             ]);

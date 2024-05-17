@@ -6,6 +6,7 @@ use App\Filament\Resources\ChildResource\Pages;
 use App\Filament\Resources\ChildResource\RelationManagers;
 use App\Models\Child;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +24,14 @@ class ChildResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label('Child Name')
+                    ->required(),
+
+                Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->label('Parent Name')
+                    ->required(),
             ]);
     }
 

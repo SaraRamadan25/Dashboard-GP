@@ -19,7 +19,6 @@ class CreateAdminsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->foreignId('area_id')->constrained('areas');
-            $table->foreignId('jacket_id')->constrained('jackets');
 
             $table->timestamps();
 

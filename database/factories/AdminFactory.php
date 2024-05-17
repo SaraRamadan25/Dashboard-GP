@@ -23,6 +23,5 @@ class AdminFactory extends Factory
             'email' => $this->faker->email,
             'phone' => $this->faker->phoneNumber,
             'area_id' => Area::factory(),
-            'jacket_id' => Jacket::factory()
         ];
     }}

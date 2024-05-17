@@ -22,8 +22,6 @@ class AreaFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'user_id' => User::factory(),
-            'jacket_id' => Jacket::factory(),
         ];
     }
 }

@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Jacket::class);
     }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(Child::class);
+    }
 }

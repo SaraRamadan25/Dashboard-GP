@@ -6,6 +6,7 @@ use App\Filament\Resources\AreaResource\Pages;
 use App\Filament\Resources\AreaResource\RelationManagers;
 use App\Models\Area;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -27,12 +28,7 @@ class AreaResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                Forms\Components\TextInput::make('admins')
-                    ->label('Admins')
-                    ->required(),
-                Forms\Components\TextInput::make('guards')
-                    ->label('Guards')
-                    ->required(),
+
             ]);
     }
 
@@ -42,23 +38,13 @@ class AreaResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Area Name'),
-                Tables\Columns\TextColumn::make('admin.name'),
-
-
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Columns\TextColumn::make('jacket_id')
+                    ->label('Jackets Model Number ')
+                    ->getStateUsing(function ($record) {
+                        return $record->jackets->pluck('modelno')->join(', ');
+                    }),
             ]);
     }
-
     public static function getRelations(): array
     {
         return [

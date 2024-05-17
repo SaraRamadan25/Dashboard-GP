@@ -9,6 +9,7 @@ class Child extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     public function safetyInfo(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(SafetyInfo::class);

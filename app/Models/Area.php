@@ -10,6 +10,8 @@ class Area extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function guards(): HasMany
     {
         return $this->hasMany(Guard::class);

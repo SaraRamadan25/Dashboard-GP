@@ -20,6 +20,7 @@ class CreateJacketsTable extends Migration
             $table->integer('batteryLevel');
             $table->dateTime('start_rent_time');
             $table->dateTime('end_rent_time');
+            $table->foreignId('area_id')->constrained('areas');
 
             $table->timestamps();
         });
